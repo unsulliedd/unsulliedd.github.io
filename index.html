@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berk Karakaş - Portfolio</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/cube.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/highlights.css">
+    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/skills.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Berk Karakaş</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="#highlights" class="nav-link" data-i18n="nav.highlights">Highlights</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="nav-lang-switch">
+                    <button class="nav-lang-btn active" data-lang="en">EN</button>
+                    <button class="nav-lang-btn" data-lang="tr">TR</button>
+                </div>
+                <button id="themeToggle" class="nav-icon-btn" aria-label="" data-i18n-aria-label="aria.toggleTheme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background" id="cubeBackground">
+            
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in-up" data-i18n="hero.title">Building Immersive Games & Scalable
+                    Systems</h1>
+                <p class="hero-subtitle animate-fade-in-up delay-1" data-i18n="hero.subtitle">Creative Technologist with experience in Unity Game Development and .NET Enterprise Solutions</p>
+                <div class="hero-buttons animate-fade-in-up delay-2">
+                    <a href="#projects" class="btn btn-primary" data-i18n="hero.projects">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="hero.contact">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Ticker -->
+        <div class="tech-ticker animate-fade-in-up delay-3">
+            <div class="tech-track">
+                <div class="tech-inner">
+                    <div class="tech-item"><i class="fab fa-unity"></i> Unity</div>
+                    <div class="tech-item"><i class="fas fa-code"></i> C#</div>
+                    <div class="tech-item"><i class="fas fa-cubes"></i> .NET 9</div>
+                    <div class="tech-item"><i class="fas fa-database"></i> SQL Server</div>
+                    <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+                    <div class="tech-item"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="tech-item"><i class="fab fa-git-alt"></i> Git</div>
+                    <div class="tech-item"><i class="fas fa-server"></i> Backend</div>
+                    <div class="tech-item"><i class="fas fa-gamepad"></i> Game Design</div>
+                    <div class="tech-item"><i class="fas fa-project-diagram"></i> Architecture</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Bento Grid) -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="about.title">About Me</h2>
+            <div class="bento-grid animate-on-scroll">
+                <!-- Bio Box -->
+                <div class="bento-item bio-box">
+                    <h3 data-i18n="about.whoIAm">Who I Am</h3>
+                    <p data-i18n="about.bio">Computer Engineer with experience in Unity game development and .NET enterprise solutions. At Hooligan Games, I work collaboratively with development teams to ship 10+ mobile games across hyper casual and hybrid casual genres. Experienced in building reusable game systems, multiplayer architectures, and cross-team code sharing. Proficient in .NET Core, ASP.NET, Entity Framework, and designing scalable backend systems with RESTful APIs, layered architecture patterns, and database optimization.</p>
+                </div>
+
+                <!-- Stats/Experience Box -->
+                <div class="bento-item experience-box">
+                    <div class="bento-stat">
+                        <span class="bento-number">10+</span>
+                        <span class="bento-label" data-i18n="about.gamesShipped">Games Shipped</span>
+                    </div>
+                    <div class="bento-stat">
+                        <span class="bento-number">4+</span>
+                        <span class="bento-label" data-i18n="about.enterpriseApps">Enterprise Apps</span>
+                    </div>
+                </div>
+
+                <!-- Location Box -->
+                <div class="bento-item location-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span data-i18n="about.location">Turkey</span>
+                    <small data-i18n="about.openToRemote">Open to Remote</small>
+                </div>
+
+                <!-- Social Boxes -->
+                <a href="https://github.com/unsulliedd" target="_blank" class="bento-item social-box github">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <a href="https://linkedin.com/in/berk-karakas/" target="_blank" class="bento-item social-box linkedin">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Highlights Section -->
+    <section id="highlights" class="highlights">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="highlights.title">Featured Projects</h2>
+            <div class="highlights-carousel-wrapper">
+                <button class="carousel-nav-btn carousel-prev" id="highlightPrev" aria-label="" data-i18n-aria-label="aria.previousProject">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="highlights-carousel" id="highlightsCarousel">
+                    <!-- Highlights will be dynamically loaded here -->
+                </div>
+                <button class="carousel-nav-btn carousel-next" id="highlightNext" aria-label="" data-i18n-aria-label="aria.nextProject">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-dots-container" id="carouselDotsContainer">
+                    <!-- Dots will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="projects.title">All Projects</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" data-i18n="projects.all">All Projects</button>
+                <button class="filter-btn" data-filter="unity" data-i18n="projects.unity">Unity Games</button>
+                <button class="filter-btn" data-filter="dotnet" data-i18n="projects.dotnet">.NET Applications</button>
+                <button class="filter-btn" data-filter="opensource" data-i18n="projects.opensource">Open Source Tools</button>
+                <button class="filter-btn" data-filter="other" data-i18n="projects.other">Other</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="projectSearch" data-i18n-placeholder="projects.searchPlaceholder" placeholder="Search projects...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+            <div class="projects-expand-wrapper" id="projectsExpandWrapper" style="display: none;">
+                <button class="btn btn-expand" id="projectsExpandBtn" data-i18n="projects.viewAll">
+                    <i class="fas fa-chevron-down"></i> <span>View All Projects</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="skills.title">Skills</h2>
+            <div class="skills-container">
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.programmingLanguages">Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.gameDevelopment">Game Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Unity 3D</span>
+                        <span class="skill-tag">Unity 2D</span>
+                        <span class="skill-tag">Unity UI</span>
+                        <span class="skill-tag">DOTween</span>
+                        <span class="skill-tag">UniTask</span>
+                        <span class="skill-tag">Netcode</span>
+                        <span class="skill-tag">Event System</span>
+                        <span class="skill-tag">Unity Input System</span>
+                        <span class="skill-tag">Unity Animator</span>
+                        <span class="skill-tag">Object Pooling</span>
+                        <span class="skill-tag">State Machine</span>
+                        <span class="skill-tag">Unity NavMesh</span>
+                        <span class="skill-tag">Mobile Optimization</span>
+                   </div>
+                </div>
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.backendDevelopment">Backend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ASP.NET Core</span>
+                        <span class="skill-tag">.NET 6/8/9</span>
+                        <span class="skill-tag">Entity Framework Core</span>
+                        <span class="skill-tag">RESTful APIs</span>
+                        <span class="skill-tag">Django</span>
+                    </div>
+                </div>
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.frontendDevelopment">Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">WPF</span>
+                    </div>
+                </div>
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.databaseArchitecture">Database & Architecture</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Repository Pattern</span>
+                        <span class="skill-tag">Unit of Work</span>
+                        <span class="skill-tag">MVVM</span>
+                        <span class="skill-tag">Layered Architecture</span>
+                    </div>
+                </div>
+                <div class="skills-category animate-on-scroll">
+                    <h3 data-i18n="skills.toolsOthers">Tools & Others</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">LDAP</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Serilog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="contact.title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>berkkarakas98@hotmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/berk-karakas/"
+                            target="_blank">linkedin.com/in/berk-karakas/</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/unsulliedd" target="_blank">github.com/unsulliedd</a>
+                    </div>
+                </div>
+                <div class="cv-downloads animate-on-scroll">
+                    <h3 data-i18n="contact.viewCVs">View CVs</h3>
+                    <div class="cv-buttons">
+                        <div class="cv-button-group">
+                            <button class="cv-btn" data-cv-type="unity">
+                                <i class="fas fa-file-alt"></i> <span data-i18n="contact.unityCV">Unity Game Developer CV</span>
+                            </button>
+                            <button class="cv-download-btn" data-cv-type="unity" title="" data-i18n-title="aria.downloadCV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        <div class="cv-button-group">
+                            <button class="cv-btn" data-cv-type="dotnet">
+                                <i class="fas fa-file-alt"></i> <span data-i18n="contact.dotnetCV">.NET Developer CV</span>
+                            </button>
+                            <button class="cv-download-btn" data-cv-type="dotnet" title="" data-i18n-title="aria.downloadCV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Berk Karakaş. All rights reserved.</p>
+            <p data-i18n="footer.builtWith">Built with HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- CV Viewer Modal -->
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <button class="cv-modal-download" id="cvModalDownload" aria-label="" data-i18n-aria-label="aria.downloadCV">
+                    <i class="fas fa-download"></i>
+                </button>
+                <button class="close-cv-modal" aria-label="" data-i18n-aria-label="aria.closeCV">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe id="cvFrame" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" aria-label="" data-i18n-aria-label="aria.closeModal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

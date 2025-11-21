@@ -1,0 +1,117 @@
+/* Responsive Styles - Media Queries */
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-controls {
+        gap: 0.5rem;
+    }
+
+    .nav-icon-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .nav-lang-switch {
+        padding: 3px;
+    }
+
+    .nav-lang-btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        min-width: 32px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tech-ticker {
+        padding: 0.75rem 0;
+    }
+
+    .tech-item {
+        font-size: 0.85rem;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        transition: 0.3s ease;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar .container {
+        padding: 1rem 15px;
+    }
+
+    .highlights-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+
+    .cv-modal-content {
+        width: 95%;
+        height: 95vh;
+        max-height: 95vh;
+        margin: 0 auto;
+    }
+
+    /* Bento Grid Mobile */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .bio-box,
+    .experience-box,
+    .location-box,
+    .social-box {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+

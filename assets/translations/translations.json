@@ -1,0 +1,135 @@
+{
+    "en": {
+        "nav": {
+            "home": "Home",
+            "about": "About",
+            "highlights": "Highlights",
+            "projects": "Projects",
+            "skills": "Skills",
+            "contact": "Contact"
+        },
+        "hero": {
+            "title": "Building Immersive Games & Scalable Systems",
+            "subtitle": "Creative Technologist with experience in Unity Game Development and .NET Enterprise Solutions",
+            "projects": "View Projects",
+            "contact": "Get In Touch"
+        },
+        "about": {
+            "title": "About Me",
+            "whoIAm": "Who I Am",
+            "bio": "Computer Engineer with experience in Unity game development and .NET enterprise solutions. At Hooligan Games, I work collaboratively with development teams to ship 10+ mobile games across hyper casual and hybrid casual genres. Experienced in building reusable game systems, multiplayer architectures, and cross-team code sharing. Proficient in .NET Core, ASP.NET, Entity Framework, and designing scalable backend systems with RESTful APIs, layered architecture patterns, and database optimization.",
+            "gamesShipped": "Games Shipped",
+            "enterpriseApps": "Enterprise Apps",
+            "location": "Turkey",
+            "openToRemote": "Open to Remote"
+        },
+        "highlights": {
+            "title": "Featured Projects"
+        },
+        "projects": {
+            "title": "All Projects",
+            "all": "All Projects",
+            "unity": "Unity Games",
+            "dotnet": ".NET Applications",
+            "opensource": "Open Source Tools",
+            "other": "Other",
+            "searchPlaceholder": "Search projects...",
+            "viewAll": "View All Projects",
+            "showLess": "Show Less"
+        },
+        "skills": {
+            "title": "Skills",
+            "programmingLanguages": "Programming Languages",
+            "gameDevelopment": "Game Development",
+            "backendDevelopment": "Backend Development",
+            "frontendDevelopment": "Frontend Development",
+            "databaseArchitecture": "Database & Architecture",
+            "toolsOthers": "Tools & Others"
+        },
+        "contact": {
+            "title": "Get In Touch",
+            "viewCVs": "View CVs",
+            "unityCV": "Unity Game Developer CV",
+            "dotnetCV": ".NET Developer CV",
+            "fullstackCV": "Full-Stack Developer CV"
+        },
+        "footer": {
+            "builtWith": "Built with HTML, CSS, and JavaScript"
+        },
+        "aria": {
+            "toggleTheme": "Toggle theme",
+            "previousProject": "Previous project",
+            "nextProject": "Next project",
+            "downloadCV": "Download CV",
+            "closeCV": "Close CV",
+            "closeModal": "Close modal"
+        }
+    },
+    "tr": {
+        "nav": {
+            "home": "Ana Sayfa",
+            "about": "Hakkımda",
+            "highlights": "Öne Çıkanlar",
+            "projects": "Projeler",
+            "skills": "Yetenekler",
+            "contact": "İletişim"
+        },
+        "hero": {
+            "title": "Sürükleyici Oyunlar & Ölçeklenebilir Sistemler",
+            "subtitle": "Unity Oyun Geliştirme ve .NET Kurumsal Çözümleri konusunda uzmanlaşmış Yaratıcı Teknoloji Uzmanı",
+            "projects": "Projeleri Gör",
+            "contact": "İletişime Geç"
+        },
+        "about": {
+            "title": "Hakkımda",
+            "whoIAm": "Ben Kimim",
+            "bio": "Unity oyun geliştirme ve .NET kurumsal çözümler konusunda deneyimli bir bilgisayar mühendisiyim. Hooligan Games'te, geliştirme ekipleriyle birlikte hiper casual ve hybrid casual türlerinde 10'dan fazla mobil oyunun çıkış sürecinde aktif rol aldım. Yeniden kullanılabilir oyun sistemleri, multiplayer mimarileri ve ekipler arası kod paylaşımı üzerine çalıştım. .NET Core, ASP.NET, Entity Framework konularında yetkinim; RESTful API'ler, katmanlı mimari desenleri ve veritabanı optimizasyonu içeren ölçeklenebilir backend sistemleri tasarlama deneyimine sahibim.",
+            "gamesShipped": "Yayınlanan Oyunlar",
+            "enterpriseApps": "Kurumsal Uygulamar",
+            "location": "Türkiye",
+            "openToRemote": "Uzaktan Çalışmaya Açık"
+        },
+        "highlights": {
+            "title": "Öne Çıkan Projeler"
+        },
+        "projects": {
+            "title": "Tüm Projeler",
+            "all": "Tüm Projeler",
+            "unity": "Unity Oyunları",
+            "dotnet": ".NET Uygulamaları",
+            "opensource": "Açık Kaynak Araçları",
+            "other": "Diğer",
+            "searchPlaceholder": "Projelerde ara...",
+            "viewAll": "Tüm Projeleri Gör",
+            "showLess": "Daha Az Göster"
+        },
+        "skills": {
+            "title": "Yetenekler",
+            "programmingLanguages": "Programlama Dilleri",
+            "gameDevelopment": "Oyun Geliştirme",
+            "backendDevelopment": "Backend Geliştirme",
+            "frontendDevelopment": "Frontend Geliştirme",
+            "databaseArchitecture": "Veritabanı & Mimari",
+            "toolsOthers": "Araçlar & Diğerleri"
+        },
+        "contact": {
+            "title": "İletişime Geç",
+            "viewCVs": "Özgeçmişleri Görüntüle",
+            "unityCV": "Unity Oyun Geliştirici Özgeçmişi",
+            "dotnetCV": ".NET Geliştirici Özgeçmişi",
+            "fullstackCV": "Full-Stack Geliştirici Özgeçmişi"
+        },
+        "footer": {
+            "builtWith": "HTML, CSS ve JavaScript ile geliştirildi"
+        },
+        "aria": {
+            "toggleTheme": "Tema değiştir",
+            "previousProject": "Önceki proje",
+            "nextProject": "Sonraki proje",
+            "downloadCV": "Özgeçmişi indir",
+            "closeCV": "Özgeçmişi kapat",
+            "closeModal": "Modalı kapat"
+        }
+    }
+}
+

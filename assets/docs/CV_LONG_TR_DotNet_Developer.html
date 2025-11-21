@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Berk Karakaş - Full Stack Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            margin: 0;
+            padding: 2cm;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 8.5in;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20pt;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 5pt;
+            text-align: center;
+        }
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+            text-transform: uppercase;
+        }
+        .contact {
+            font-size: 10pt;
+            margin-bottom: 10pt;
+            text-align: center;
+        }
+        .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        ul {
+            margin-top: 6pt;
+            margin-bottom: 6pt;
+            padding-left: 20pt;
+        }
+        li {
+            margin-bottom: 4pt;
+        }
+        .experience-item, .project-item {
+            margin-bottom: 10pt;
+        }
+        .job-title {
+            font-weight: bold;
+        }
+        .company {
+            font-weight: normal;
+        }
+        .date {
+            float: right;
+            font-weight: normal;
+        }
+        .clear {
+            clear: both;
+        }
+        .project-title {
+            font-weight: bold;
+        }
+        .project-link {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Berk Karakaş</h1>
+            <div class="contact">
+                <a href="mailto:berkkarakas98@hotmail.com">berkkarakas98@hotmail.com</a> | 
+                <a href="https://github.com/unsulliedd">github.com/unsulliedd</a> | 
+                <a href="https://unsulliedd.github.io">unsulliedd.github.io</a> | 
+                <a href="https://linkedin.com/in/berk-karakas/">linkedin.com/in/berk-karakas</a>
+            </div>
+        </div>
+
+    <h2>Beceriler</h2>
+    <p><strong>Programlama Dilleri:</strong> C#, C++, C, Python, JavaScript</p>
+    <p><strong>Backend Frameworkleri:</strong> ASP.NET Core (MVC, Web API), .NET 6, .NET 8, .NET 9</p>
+    <p><strong>Masaüstü Geliştirme:</strong> WPF, MVVM Pattern</p>
+    <p><strong>Mimari Kalıplar:</strong> Katmanlı Mimari, Repository Pattern, Unit of Work Pattern, Code First Approach</p>
+    <p><strong>Veritabanı:</strong> MS SQL Server, SQLite, Entity Framework Core</p>
+    <p><strong>Kimlik Doğrulama ve Yetkilendirme:</strong> ASP.NET Core Identity, Active Directory (AD), LDAP, Role-Based Access Control (RBAC)</p>
+    <p><strong>Frontend:</strong> HTML, CSS, JavaScript, AJAX, Razor Views</p>
+    <p><strong>Versiyon Kontrol:</strong> Git</p>
+
+    <h2>Deneyim</h2>
+    
+    <div class="experience-item">
+        <div>
+            <span class="job-title">Stajyer / Full Stack Developer,</span> <span class="company">Eti Maden İşletmeleri Genel Müdürlüğü</span>
+            <span class="date">Temmuz 2023 – Ağustos 2023</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Active Directory entegrasyonlu, rol tabanlı erişim kontrol sistemi içeren .NET tabanlı web uygulamaları geliştirdim</li>
+            <li>Kurumsal düzeyde güvenlik sağlayan, hassas belgelere kullanıcı erişimini yöneten klasör bazlı yetkilendirme sistemi tasarladım</li>
+            <li>Yapısal katmanlı mimari ile ölçeklenebilirlik ve yeniden kullanılabilirlik odaklı çalışarak kod tekrarını %40 azalttım</li>
+            <li>Gerçek zamanlı veri alımı için AJAX kullanarak kullanıcı deneyimini artırdım ve gereksiz sayfa yenilemelerini azalttım</li>
+            <li>Kurumsal kimlik doğrulaması için LDAP protokolü entegre ederek mevcut altyapı ile uyumlu bir kullanıcı yönetimi sistemi oluşturdum</li>
+        </ul>
+    </div>
+
+    <div class="experience-item">
+        <div>
+            <span class="job-title">Stajyer / Full Stack Developer,</span> <span class="company">DataKent</span>
+            <span class="date">Mart 2022 – Ağustos 2022</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>.NET platformunda katmanlı mimari yaklaşımı uyguladım ve ölçeklenebilir, sürdürülebilir projeler geliştirdim</li>
+            <li>HTML, CSS ve JavaScript ile tarayıcı uyumlu kullanıcı arayüzleri geliştirdim</li>
+            <li>Tasarım kalıpları ve en iyi uygulamalar doğrultusunda tam yığın geliştirme projelerine katkıda bulundum ve ekip içi kod incelemelerine katıldım</li>
+        </ul>
+    </div>
+
+    <h2>Projeler</h2>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">BMTDb</span>
+            <span class="date">github.com/unsulliedd/BMTDb</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>ASP.NET Core 9 ile Katmanlı Mimari, Repository Pattern ve Unit of Work Pattern kullanılan film veritabanı platformu</li>
+            <li>TMDb ve OMDB API'leri ile senkronize çalışan RESTful API</li>
+            <li>Film arama, görüntüleme ve yönetim panellerini içeren kullanıcı arayüzü</li>
+            <li>SMTP ile e-posta doğrulamalı ASP.NET Core Identity kimlik doğrulama sistemi ve bildirim mekanizması</li>
+            <li>Entity Framework Core ile Code First yaklaşımı, arama-sıralama-filtreleme özellikleri, favoriler ve izleme listesi</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">ETIDrive</span>
+            <span class="date">github.com/unsulliedd/ETIDrive</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>ASP.NET Core 8 ile Active Directory entegrasyonlu kurumsal doküman yönetim sistemi</li>
+            <li>Klasör bazlı yetkilendirme ve LDAP ile kullanıcı yönetimi</li>
+            <li>Gerçek zamanlı veri işlemleri için AJAX, klasör yapısı yönetimi ve hiyerarşik doküman yapısı</li>
+            <li>Kullanıcı yönetimi, rol atama, departman yönetimi ve loglama içeren yönetim paneli</li>
+            <li>Özel sağ tık menüsü, breadcrumb navigasyonu, filtreleme ve arama özellikleri</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">SubtitleCleaner</span>
+            <span class="date">github.com/unsulliedd/SubtitleCleaner</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>WPF ve .NET 9 ile geliştirilmiş altyazı temizleme uygulaması (MVVM)</li>
+            <li>Altyazı ayrıştırma ve işleme sistemi, Serilog ile loglama</li>
+            <li>Çeşitli temizleme modları, dosya doğrulama, geri alma/yenileme işlemleri ve güvenlik özellikleri</li>
+            <li>Çoklu dil desteği, kalıcı ayarlar yönetimi ve toplu işlem ilerleme takibi</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">UltimateReNamer</span>
+            <span class="date">github.com/unsulliedd/UltimateReNamer</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>WPF ve .NET 8 ile toplu dosya yeniden adlandırma ve metadata düzenleme uygulaması</li>
+            <li>Özel dosya adı kuralları, fotoğraf-video-belge-müzik metadata yönetimi</li>
+            <li>Kategori bazlı arayüzler ve önizleme sistemi</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">MANIMath</span>
+            <span class="date">github.com/unsulliedd/MANIMath</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Manim tabanlı matematiksel animasyon oluşturma platformu</li>
+            <li>REST API ile veri aktarımı ve Manim script etkileşimi</li>
+            <li>Matematiksel animasyon oluşturma arayüzü</li>
+        </ul>
+    </div>
+
+    <h2>Eğitim</h2>
+    <p><strong>Karadeniz Teknik Üniversitesi</strong> – Bilgisayar Mühendisliği Lisans &nbsp;&nbsp;&nbsp;&nbsp; Ağustos 2023</p>
+
+    </div>
+</body>
+</html>

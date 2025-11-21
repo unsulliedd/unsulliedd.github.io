@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Berk Karakaş - Full Stack Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            margin: 0;
+            padding: 2cm;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 8.5in;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20pt;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 5pt;
+            text-align: center;
+        }
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+            text-transform: uppercase;
+        }
+        .contact {
+            font-size: 10pt;
+            margin-bottom: 10pt;
+            text-align: center;
+        }
+        .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        ul {
+            margin-top: 6pt;
+            margin-bottom: 6pt;
+            padding-left: 20pt;
+        }
+        li {
+            margin-bottom: 4pt;
+        }
+        .experience-item, .project-item {
+            margin-bottom: 10pt;
+        }
+        .job-title {
+            font-weight: bold;
+        }
+        .company {
+            font-weight: normal;
+        }
+        .date {
+            float: right;
+            font-weight: normal;
+        }
+        .clear {
+            clear: both;
+        }
+        .project-title {
+            font-weight: bold;
+        }
+        .project-link {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Berk Karakaş</h1>
+            <div class="contact">
+                <a href="mailto:berkkarakas98@hotmail.com">berkkarakas98@hotmail.com</a> | 
+                <a href="https://github.com/unsulliedd">github.com/unsulliedd</a> | 
+                <a href="https://unsulliedd.github.io">unsulliedd.github.io</a> | 
+                <a href="https://linkedin.com/in/berk-karakas/">linkedin.com/in/berk-karakas</a>
+            </div>
+        </div>
+
+    <h2>Skills</h2>
+    <p><strong>Programming Languages:</strong> C#, C++, C, Python, JavaScript</p>
+    <p><strong>Backend Frameworks:</strong> ASP.NET Core (MVC, Web API), .NET 6, .NET 8, .NET 9</p>
+    <p><strong>Desktop Development:</strong> WPF, MVVM Pattern</p>
+    <p><strong>Architecture Patterns:</strong> Layered Architecture, Repository Pattern, Unit of Work Pattern, Code First Approach</p>
+    <p><strong>Database:</strong> MS SQL Server, SQLite, Entity Framework Core</p>
+    <p><strong>Authentication & Authorization:</strong> ASP.NET Core Identity, Active Directory (AD), LDAP, Role-Based Access Control (RBAC)</p>
+    <p><strong>Frontend:</strong> HTML, CSS, JavaScript, AJAX, Razor Views</p>
+    <p><strong>Version Control:</strong> Git</p>
+
+    <h2>Experience</h2>
+    
+    <div class="experience-item">
+        <div>
+            <span class="job-title">Intern / Full Stack Developer,</span> <span class="company">Eti Maden İşletmeleri Genel Müdürlüğü</span>
+            <span class="date">July 2023 – August 2023</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Led development of web-based applications integrated with Active Directory on .NET platform, implementing role-based access control system for secure document management</li>
+            <li>Designed and developed folder-based permissions system to control and restrict user access to sensitive documents, ensuring enterprise-level security</li>
+            <li>Emphasized scalability, maintainability, and code reusability through structured layered architecture, reducing code duplication by 40%</li>
+            <li>Enhanced functionality using AJAX for real-time data retrieval, improving user experience with instant feedback and reduced page reloads</li>
+            <li>Integrated LDAP protocol for enterprise authentication and user management, enabling seamless integration with existing corporate infrastructure</li>
+        </ul>
+    </div>
+
+    <div class="experience-item">
+        <div>
+            <span class="job-title">Intern / Full Stack Developer,</span> <span class="company">DataKent</span>
+            <span class="date">March 2022 – August 2022</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Implemented layered architectural approach using .NET platform to facilitate scalability and maintainability, following industry best practices</li>
+            <li>Developed front-end using HTML, CSS, and JavaScript to create responsive user interface, ensuring compatibility across different browsers</li>
+            <li>Worked on full-stack development projects following design patterns and best practices, contributing to team code reviews and knowledge sharing</li>
+        </ul>
+    </div>
+
+    <h2>Projects</h2>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">BMTDb</span>
+            <span class="date">github.com/unsulliedd/BMTDb</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Movie database platform using ASP.NET Core 9 with layered architecture, Repository Pattern, and Unit of Work Pattern</li>
+            <li>RESTful API integrating TMDb and OMDB APIs for movie data synchronization</li>
+            <li>Interface for browsing, searching, and managing movies with admin panel for user and movie management</li>
+            <li>ASP.NET Core Identity authentication with email confirmation via SMTP and notification system</li>
+            <li>Database schema using Code First approach with Entity Framework Core, search, sorting, filtering, and user profiles with favorites and watchlist</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">ETIDrive</span>
+            <span class="date">github.com/unsulliedd/ETIDrive</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Enterprise Document Management System using ASP.NET Core 8 with Active Directory integration for role-based authentication</li>
+            <li>Folder-based permissions system with LDAP protocol for enterprise user management</li>
+            <li>AJAX for real-time data retrieval, structured document hierarchy with folder management</li>
+            <li>Admin panel for user management, role assignment, department management, and audit logging</li>
+            <li>Custom context menu, breadcrumb navigation, filtering, and search functionality</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">SubtitleCleaner</span>
+            <span class="date">github.com/unsulliedd/SubtitleCleaner</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Desktop application using WPF and .NET 9 for cleaning subtitle files with MVVM pattern</li>
+            <li>Subtitle parsing and processing system with Serilog for logging and error tracking</li>
+            <li>Interface with multiple cleaning modes, file validation, re-do/revert functionality and file security features</li>
+            <li>Localization supporting multiple languages, settings management with persistent configuration, and batch processing progress tracking</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">UltimateReNamer</span>
+            <span class="date">github.com/unsulliedd/UltimateReNamer</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Desktop application using WPF and .NET 8 for batch file renaming and metadata editing with MVVM pattern</li>
+            <li>Custom rules for filename formatting and media tag management for photos, videos, documents, and music</li>
+            <li>Category-specific interfaces with preview system for reviewing changes</li>
+        </ul>
+    </div>
+
+    <div class="project-item">
+        <div>
+            <span class="project-title">MANIMath</span>
+            <span class="date">github.com/unsulliedd/MANIMath</span>
+        </div>
+        <div class="clear"></div>
+        <ul>
+            <li>Web platform for creating mathematical animations using Manim, allowing users to generate animations from equations and parameters</li>
+            <li>REST API for data transmission and Manim script interaction</li>
+            <li>Interface for mathematical animation creation</li>
+        </ul>
+    </div>
+
+    <h2>Education</h2>
+    <p><strong>Karadeniz Technical University</strong> – Bachelor's Degree in Computer Engineering &nbsp;&nbsp;&nbsp;&nbsp; August 2023</p>
+
+    </div>
+</body>
+</html>

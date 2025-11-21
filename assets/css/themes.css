@@ -1,0 +1,44 @@
+/* CSS Variables and Theme Definitions */
+
+/* Obsidian Dark Theme (Default) - Monochrome/Silver */
+:root[data-theme="dark"] {
+    --bg-primary: #050505;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --accent-primary: #e5e5e5;
+    --accent-secondary: #ffffff;
+    --accent-tertiary: #737373;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 8px 32px rgba(255, 255, 255, 0.1);
+    --gradient-start: #404040;
+    --gradient-end: #171717;
+    --gradient-text: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+    --glass-shine: rgba(255, 255, 255, 0.05);
+}
+
+/* Arch Linux Light Theme (Preserved but modernized) */
+:root[data-theme="light"] {
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f8f9fa;
+    --text-primary: #1a1a1a;
+    --text-secondary: #525252;
+    --accent-primary: #1793d1;
+    --accent-secondary: #4fc3f7;
+    --accent-tertiary: #81d4fa;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 8px 30px rgba(23, 147, 209, 0.15);
+    --gradient-start: #1793d1;
+    --gradient-end: #4fc3f7;
+    --gradient-text: linear-gradient(135deg, #1793d1 0%, #0d47a1 100%);
+    --glass-shine: rgba(255, 255, 255, 0.4);
+}
+
