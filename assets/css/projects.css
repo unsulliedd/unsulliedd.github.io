@@ -12,29 +12,67 @@
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px) scale(1.02);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-image {
     width: 100%;
-    height: 240px;
+    aspect-ratio: 16 / 9;
     background: var(--bg-tertiary);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover .project-image::after {
+    opacity: 1;
 }
 
 .project-image i {
@@ -70,15 +108,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    filter: brightness(1);
 }
 
-.project-card:hover img {
-    transform: scale(1.05);
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .project-content {
     padding: 2rem;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-content {
+    transform: translateY(-2px);
 }
 
 .project-type {
@@ -94,6 +141,14 @@
     margin-bottom: 1rem;
     letter-spacing: 0.5px;
     border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover .project-type {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-primary);
+    transform: translateX(4px);
 }
 
 .project-type i {
@@ -105,6 +160,12 @@
     margin-bottom: 0.8rem;
     color: var(--text-primary);
     font-weight: 700;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    color: var(--accent-primary);
+    transform: translateX(2px);
 }
 
 .project-description {
@@ -128,6 +189,14 @@
     font-size: 0.85rem;
     color: var(--text-primary);
     border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.tech-tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
 }
 
 .project-links {
@@ -142,11 +211,39 @@
     font-size: 0.9rem;
     transition: all 0.3s ease;
     opacity: 0.8;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width 0.3s ease;
 }
 
 .project-link:hover {
     opacity: 1;
-    text-decoration: underline;
+    color: var(--accent-primary);
+    transform: translateX(4px);
+}
+
+.project-link:hover::after {
+    width: 100%;
+}
+
+.project-link i {
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover i {
+    transform: translateX(4px);
 }
 
 /* Filter Buttons */
@@ -255,6 +352,31 @@
 }
 
 .btn-expand:hover i {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(180deg);
+}
+
+/* Stagger animation for project cards */
+.project-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.project-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.project-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.project-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.project-card:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.project-card:nth-child(6) {
+    transition-delay: 0.5s;
 }
 

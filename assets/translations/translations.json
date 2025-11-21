@@ -6,6 +6,9 @@
             "highlights": "Highlights",
             "projects": "Projects",
             "skills": "Skills",
+            "cv": "CV",
+            "unityCV": "Unity Game Developer CV",
+            "dotnetCV": ".NET Developer CV",
             "contact": "Contact"
         },
         "hero": {
@@ -60,6 +63,7 @@
             "toggleTheme": "Toggle theme",
             "previousProject": "Previous project",
             "nextProject": "Next project",
+            "viewCV": "View CV",
             "downloadCV": "Download CV",
             "closeCV": "Close CV",
             "closeModal": "Close modal"
@@ -72,6 +76,9 @@
             "highlights": "Öne Çıkanlar",
             "projects": "Projeler",
             "skills": "Yetenekler",
+            "cv": "Özgeçmiş",
+            "unityCV": "Unity Oyun Geliştirici Özgeçmişi",
+            "dotnetCV": ".NET Geliştirici Özgeçmişi",
             "contact": "İletişim"
         },
         "hero": {
@@ -126,6 +133,7 @@
             "toggleTheme": "Tema değiştir",
             "previousProject": "Önceki proje",
             "nextProject": "Sonraki proje",
+            "viewCV": "Özgeçmişi görüntüle",
             "downloadCV": "Özgeçmişi indir",
             "closeCV": "Özgeçmişi kapat",
             "closeModal": "Modalı kapat"

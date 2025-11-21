@@ -274,21 +274,14 @@ function renderHighlights() {
 
     // Render all carousel items
     carousel.innerHTML = highlightProjects.map((project, index) => {
-        const posterImage = project.screenshots && project.screenshots.length > 0 
-            ? project.screenshots[0] 
-            : project.image || '';
-        const backgroundImage = project.screenshots && project.screenshots.length > 1 
-            ? project.screenshots[1] 
-            : project.screenshots && project.screenshots.length > 0 
-                ? project.screenshots[0] 
-                : project.image || '';
+        const coverImage = project.image || '';
 
         return `
             <div class="highlight-carousel-item ${index === 0 ? 'active' : ''}" data-project-id="${project.id}" data-index="${index}">
-                <div class="highlight-card">
+                <div class="highlight-card" ${coverImage ? `style="background-image: url('${coverImage}');"` : ''}>
+                    <div class="list-card-overlay"></div>
                     <div class="list-card">
                         <div class="list-card-wrapper">
-                            ${posterImage ? `<img class="list-card-poster" src="${posterImage}" alt="${project.name}" onerror="this.style.display='none'">` : ''}
                             <div class="list-card-text">
                                 <span class="highlight-badge">
                                     <i class="fas ${getProjectTypeIcon(project.type || 'other')}"></i>
@@ -296,9 +289,12 @@ function renderHighlights() {
                                 </span>
                                 <h1 class="list-card-title">${project.name}</h1>
                                 <div class="list-card-subinfo">
-                                    <span class="box">${project.type === 'unity' ? 'Unity Game' : project.type}</span>
-                                    <span class="dot"></span>
-                                    <span>${project.technologies ? project.technologies.slice(0, 2).join(', ') : ''}</span>
+                                    <span class="box">${project.type === 'unity' ? 'Unity Game' : (project.type === 'dotnet' || project.type === '.net' ? '.NET' : project.type)}</span>
+                                    ${project.technologies && project.technologies.length > 0 ? `
+                                        <div class="list-card-tags">
+                                            ${project.technologies.slice(0, 3).map(tech => `<span class="netflix-tag">${tech}</span>`).join('')}
+                                        </div>
+                                    ` : ''}
                                 </div>
                                 <div class="list-card-desc">
                                     <p>${project.description}</p>
@@ -317,11 +313,6 @@ function renderHighlights() {
                             </a>` : ''}
                         </div>
                     </div>
-                    ${backgroundImage ? `
-                        <div class="list-card-background">
-                            <img class="list-card-background-img" src="${backgroundImage}" alt="${project.name}">
-                        </div>
-                    ` : ''}
                 </div>
             </div>
         `;
@@ -512,13 +503,12 @@ function renderProjects() {
     projectsGrid.innerHTML = projectsToShow.map(project => `
         <div class="project-card animate-on-scroll" data-project-id="${project.id}">
             <div class="project-image">
-                ${project.screenshots && project.screenshots.length > 0
+                ${project.image
+            ? `<img src="${project.image}" alt="${project.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-${getProjectIcon(project.type)}\\'></i>'">`
+            : project.screenshots && project.screenshots.length > 0
             ? `<img src="${project.screenshots[0]}" alt="${project.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-${getProjectIcon(project.type)}\\'></i>'">`
             : `<i class="fas fa-${getProjectIcon(project.type)}"></i>`
         }
-                <div class="project-type-icon">
-                    <i class="fas ${getProjectTypeIcon(project.type || 'other')}"></i>
-                </div>
             </div>
             <div class="project-content">
                 <span class="project-type">
@@ -577,9 +567,20 @@ function toggleProjectsExpansion() {
     
     // Smooth scroll to projects section if expanding
     if (projectsExpanded) {
+        // Wait for DOM to update with new projects
         setTimeout(() => {
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 70;
+                const offsetTop = projectsSection.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }, 200);
     }
 }
 
@@ -662,6 +663,26 @@ function searchProjects(query) {
 // Show project detail modal with carousel
 let currentScreenshotIndex = 0;
 let currentProjectScreenshots = [];
+let currentTrailerIframe = null; // Track the current trailer iframe to stop it when navigating
+
+// Convert YouTube URL to embed URL
+function convertToYouTubeEmbed(url) {
+    if (!url) return null;
+    
+    // Handle different YouTube URL formats
+    let videoId = null;
+    
+    // Standard YouTube URL: https://www.youtube.com/watch?v=VIDEO_ID
+    const watchMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+    if (watchMatch) {
+        videoId = watchMatch[1];
+    }
+    
+    if (!videoId) return null;
+    
+    // Return embed URL with autoplay and JS API enabled
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0&modestbranding=1&enablejsapi=1`;
+}
 
 // Make functions globally accessible for onclick handlers
 window.showProjectDetailModal = function(projectId) {
@@ -673,7 +694,29 @@ window.showProjectDetailModal = function(projectId) {
 
     const modal = document.getElementById('projectModal');
     const modalBody = document.getElementById('modalBody');
-    currentProjectScreenshots = project.screenshots || [];
+    
+    // Stop any currently playing trailer
+    if (currentTrailerIframe) {
+        try {
+            currentTrailerIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch (e) {}
+        currentTrailerIframe = null;
+    }
+    
+    // Use only screenshots for carousel (cover image is not automatically included)
+    const screenshots = project.screenshots || [];
+    
+    // Check if trailer exists and convert to embed URL
+    const trailerEmbedUrl = project.trailer ? convertToYouTubeEmbed(project.trailer) : null;
+    
+    // Build media items array: trailer first (if exists), then screenshots only
+    const mediaItems = [];
+    if (trailerEmbedUrl) {
+        mediaItems.push({ type: 'video', url: trailerEmbedUrl, isTrailer: true });
+    }
+    mediaItems.push(...screenshots.map(img => ({ type: 'image', url: img })));
+    
+    currentProjectScreenshots = mediaItems;
     currentScreenshotIndex = 0;
 
     // Build modal content
@@ -686,12 +729,32 @@ window.showProjectDetailModal = function(projectId) {
                             <span id="screenshotCounter">1 / ${currentProjectScreenshots.length}</span>
                         </div>
                     ` : ''}
-                    ${currentProjectScreenshots.map((screenshot, index) => `
-                        <img src="${screenshot}" alt="${project.name} screenshot ${index + 1}" 
-                             class="project-modal-screenshot ${index === 0 ? 'active' : ''}"
-                             onload="detectImageOrientation(this)"
-                             onerror="this.style.display='none'">
-                    `).join('')}
+                    ${currentProjectScreenshots.map((item, index) => {
+                        if (item.type === 'video') {
+                            return `
+                                <div class="project-modal-media-item project-modal-video ${index === 0 ? 'active' : ''}" data-index="${index}">
+                                    <iframe 
+                                        id="trailer-iframe-${index}"
+                                        src="${item.url}" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen
+                                        class="project-modal-trailer">
+                                    </iframe>
+                                </div>
+                            `;
+                        } else {
+                            return `
+                                <img src="${item.url}" alt="${project.name} ${item.isTrailer ? 'trailer' : 'screenshot'} ${index + 1}" 
+                                     class="project-modal-screenshot ${index === 0 ? 'active' : ''}"
+                                     onclick="openImageViewer(${index})"
+                                     style="cursor: pointer;"
+                                     onload="detectImageOrientation(this)"
+                                     onerror="this.style.display='none'"
+                                     data-index="${index}">
+                            `;
+                        }
+                    }).join('')}
                     ${currentProjectScreenshots.length > 1 ? `
                         <button class="project-modal-screenshot-nav prev" onclick="changeScreenshot(-1)" aria-label="Previous screenshot">
                             <i class="fas fa-chevron-left"></i>
@@ -820,6 +883,9 @@ window.detectImageOrientation = function(img) {
 window.changeScreenshot = function(direction) {
     if (currentProjectScreenshots.length === 0) return;
     
+    // Stop current trailer if playing
+    stopCurrentTrailer();
+    
     currentScreenshotIndex += direction;
     
     if (currentScreenshotIndex < 0) {
@@ -834,29 +900,88 @@ window.changeScreenshot = function(direction) {
 
 window.goToScreenshot = function(index) {
     if (index < 0 || index >= currentProjectScreenshots.length) return;
+    
+    // Stop current trailer if playing
+    stopCurrentTrailer();
+    
     currentScreenshotIndex = index;
     updateScreenshotDisplay();
     updateScreenshotNavigation();
 }
 
+// Stop current trailer video
+function stopCurrentTrailer() {
+    // Stop the tracked iframe
+    if (currentTrailerIframe) {
+        try {
+            currentTrailerIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch (e) {
+            // Silently fail if postMessage doesn't work
+        }
+        currentTrailerIframe = null;
+    }
+    
+    // Also stop all video iframes in the modal (in case tracking failed)
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        const allVideoIframes = modal.querySelectorAll('.project-modal-video iframe');
+        allVideoIframes.forEach(iframe => {
+            try {
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            } catch (e) {
+                // Silently fail if postMessage doesn't work
+            }
+        });
+    }
+}
+
+// Play current trailer video
+function playCurrentTrailer() {
+    if (currentTrailerIframe) {
+        try {
+            currentTrailerIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } catch (e) {
+            // Silently fail if postMessage doesn't work
+        }
+    }
+}
+
 function updateScreenshotDisplay() {
-    const screenshots = document.querySelectorAll('.project-modal-screenshot');
+    const mediaItems = document.querySelectorAll('.project-modal-screenshot, .project-modal-video');
     const indicators = document.querySelectorAll('.project-modal-indicator');
     const counter = document.getElementById('screenshotCounter');
     
-    screenshots.forEach((img, index) => {
+    // Stop any currently playing trailer
+    stopCurrentTrailer();
+    
+    mediaItems.forEach((item, index) => {
         if (index === currentScreenshotIndex) {
-            img.classList.add('active');
+            item.classList.add('active');
+            
+            // If it's a video, track the iframe and play it
+            if (item.classList.contains('project-modal-video')) {
+                const iframe = item.querySelector('iframe');
+                if (iframe) {
+                    currentTrailerIframe = iframe;
+                    // Play the video when it becomes active (only if it's the first item)
+                    if (index === 0) {
+                        setTimeout(() => {
+                            playCurrentTrailer();
+                        }, 100);
+                    }
+                }
+            }
+            
             // Detect orientation for active image
-            if (img.complete && img.naturalWidth > 0) {
-                detectImageOrientation(img);
-            } else {
-                img.onload = function() {
+            if (item.tagName === 'IMG' && item.complete && item.naturalWidth > 0) {
+                detectImageOrientation(item);
+            } else if (item.tagName === 'IMG') {
+                item.onload = function() {
                     detectImageOrientation(this);
                 };
             }
         } else {
-            img.classList.remove('active');
+            item.classList.remove('active');
         }
     });
     
@@ -886,9 +1011,131 @@ function updateScreenshotNavigation() {
     }
 }
 
+// Full-size Image Viewer
+let currentImageViewerIndex = 0;
+
+window.openImageViewer = function(index) {
+    if (currentProjectScreenshots.length === 0) return;
+    
+    // Check if the clicked item is a video - don't open image viewer for videos
+    const clickedItem = currentProjectScreenshots[index];
+    if (clickedItem && clickedItem.type === 'video') {
+        return; // Don't open image viewer for videos
+    }
+    
+    // Find the first image index (skip videos)
+    let imageIndex = 0;
+    for (let i = 0; i < currentProjectScreenshots.length; i++) {
+        if (currentProjectScreenshots[i].type === 'image') {
+            imageIndex = i;
+            if (i >= index) break; // Use the clicked index if it's an image, otherwise use first image
+            if (i === index) break;
+        }
+    }
+    
+    // Build array of only images for the image viewer
+    const imageItems = currentProjectScreenshots.filter(item => item.type === 'image');
+    if (imageItems.length === 0) return;
+    
+    // Find the index in the image-only array
+    let viewerIndex = 0;
+    for (let i = 0; i < currentProjectScreenshots.length; i++) {
+        if (currentProjectScreenshots[i].type === 'image' && i <= index) {
+            viewerIndex = imageItems.findIndex(img => img.url === currentProjectScreenshots[i].url);
+            if (i === index) break;
+        }
+    }
+    
+    currentImageViewerIndex = viewerIndex >= 0 ? viewerIndex : 0;
+    const imageViewerModal = document.getElementById('imageViewerModal');
+    const imageViewerImg = document.getElementById('imageViewerImg');
+    const imageViewerCounter = document.getElementById('imageViewerCounter');
+    
+    if (!imageViewerModal || !imageViewerImg) return;
+    
+    // Set initial image
+    imageViewerImg.src = imageItems[currentImageViewerIndex].url;
+    imageViewerImg.alt = `Full size image ${currentImageViewerIndex + 1}`;
+    
+    // Update counter
+    if (imageViewerCounter) {
+        imageViewerCounter.textContent = `${currentImageViewerIndex + 1} / ${imageItems.length}`;
+    }
+    
+    // Show modal
+    imageViewerModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Update navigation buttons visibility
+    updateImageViewerNavigation();
+}
+
+function closeImageViewer() {
+    const imageViewerModal = document.getElementById('imageViewerModal');
+    if (imageViewerModal) {
+        imageViewerModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+function navigateImageViewer(direction) {
+    if (currentProjectScreenshots.length === 0) return;
+    
+    currentImageViewerIndex += direction;
+    
+    if (currentImageViewerIndex < 0) {
+        currentImageViewerIndex = currentProjectScreenshots.length - 1;
+    } else if (currentImageViewerIndex >= currentProjectScreenshots.length) {
+        currentImageViewerIndex = 0;
+    }
+    
+    const imageViewerImg = document.getElementById('imageViewerImg');
+    const imageViewerCounter = document.getElementById('imageViewerCounter');
+    
+    if (imageViewerImg) {
+        imageViewerImg.src = currentProjectScreenshots[currentImageViewerIndex];
+        imageViewerImg.alt = `Full size image ${currentImageViewerIndex + 1}`;
+    }
+    
+    if (imageViewerCounter) {
+        imageViewerCounter.textContent = `${currentImageViewerIndex + 1} / ${currentProjectScreenshots.length}`;
+    }
+}
+
+function updateImageViewerNavigation() {
+    const prevBtn = document.querySelector('.image-viewer-prev');
+    const nextBtn = document.querySelector('.image-viewer-next');
+    
+    if (currentProjectScreenshots.length <= 1) {
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+    } else {
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+    }
+}
+
 // Keyboard navigation for screenshots
 document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('projectModal');
+    const imageViewerModal = document.getElementById('imageViewerModal');
+    
+    // Handle image viewer keyboard navigation
+    if (imageViewerModal && imageViewerModal.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            navigateImageViewer(-1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            navigateImageViewer(1);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            closeImageViewer();
+        }
+        return;
+    }
+    
+    // Handle project modal keyboard navigation
     if (modal && modal.style.display === 'block') {
         if (e.key === 'ArrowLeft') {
             changeScreenshot(-1);
@@ -954,6 +1201,30 @@ cvDownloadButtons.forEach(btn => {
     });
 });
 
+// Navbar CV View buttons
+const navCvViewButtons = document.querySelectorAll('.nav-cv-view-btn');
+navCvViewButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent dropdown from closing
+        const cvType = btn.dataset.cvType;
+        currentCvType = cvType;
+        const cvPath = getCvHtmlPath(cvType);
+        cvFrame.src = cvPath;
+        cvModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Navbar CV Download buttons
+const navCvDownloadButtons = document.querySelectorAll('.nav-cv-download-btn');
+navCvDownloadButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent dropdown from closing
+        const cvType = btn.dataset.cvType;
+        downloadCvPdf(cvType);
+    });
+});
+
 // CV Modal Download button
 const cvModalDownload = document.getElementById('cvModalDownload');
 if (cvModalDownload) {
@@ -984,6 +1255,28 @@ window.addEventListener('click', (e) => {
 
 // Close modal
 function closeProjectModal() {
+    // Stop any playing trailer - this now stops all videos in the modal
+    stopCurrentTrailer();
+    
+    // Force stop all videos by clearing their src when modal closes
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        const allVideoIframes = modal.querySelectorAll('.project-modal-video iframe');
+        allVideoIframes.forEach(iframe => {
+            try {
+                // Try to pause first
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            } catch (e) {}
+            // Clear src to force stop - this ensures video stops completely
+            iframe.src = '';
+        });
+    }
+    
+    // Reset tracking
+    currentTrailerIframe = null;
+    currentScreenshotIndex = 0;
+    currentProjectScreenshots = [];
+    
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
@@ -1028,6 +1321,32 @@ window.addEventListener('click', (e) => {
         closeProjectModal();
     }
 });
+
+// Image Viewer Modal Event Listeners
+const imageViewerModal = document.getElementById('imageViewerModal');
+const imageViewerClose = document.querySelector('.image-viewer-close');
+const imageViewerPrev = document.querySelector('.image-viewer-prev');
+const imageViewerNext = document.querySelector('.image-viewer-next');
+
+if (imageViewerClose) {
+    imageViewerClose.addEventListener('click', closeImageViewer);
+}
+
+if (imageViewerPrev) {
+    imageViewerPrev.addEventListener('click', () => navigateImageViewer(-1));
+}
+
+if (imageViewerNext) {
+    imageViewerNext.addEventListener('click', () => navigateImageViewer(1));
+}
+
+if (imageViewerModal) {
+    window.addEventListener('click', (e) => {
+        if (e.target === imageViewerModal) {
+            closeImageViewer();
+        }
+    });
+}
 
 // Re-attach close button listener after modal content is updated
 function attachCloseButtonListener() {
